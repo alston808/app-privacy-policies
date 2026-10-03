@@ -1,0 +1,60 @@
+---
+# Custom layout for legal documents.
+# Provides a header with app name + document type, metadata badges, and a
+# table of contents. The document body (markdown) is rendered below.
+#
+# Variables available (set in each document's front matter):
+#   page.app          — lowercase app identifier (used in CSS anchor links)
+#   page.app_display  — human-readable app name
+#   page.doc_type     — "Privacy Policy" | "Terms of Service" | "EULA"
+#   page.effective_date
+#   page.last_updated
+#   page.version
+layout: default
+---
+
+<article class="legal-document">
+  <header class="document-header">
+    <h1>{{ page.title }}</h1>
+
+    <div class="document-meta">
+      {% if page.app_display %}
+        <span class="meta-item"><strong>App:</strong> {{ page.app_display }}</span>
+      {% endif %}
+      {% if page.doc_type %}
+        <span class="meta-item"><strong>Type:</strong> {{ page.doc_type }}</span>
+      {% endif %}
+      {% if page.effective_date %}
+        <span class="meta-item"><strong>Effective date:</strong> {{ page.effective_date | date: "%B %-d, %Y" }}</span>
+      {% endif %}
+      {% if page.last_updated %}
+        <span class="meta-item"><strong>Last updated:</strong> {{ page.last_updated | date: "%B %-d, %Y" }}</span>
+      {% endif %}
+      {% if page.version %}
+        <span class="meta-item"><strong>Version:</strong> {{ page.version }}</span>
+      {% endif %}
+    </div>
+
+    {% if page.doc_type == "Privacy Policy" %}
+      <nav class="document-nav" aria-label="Document navigation">
+        <a href="{{ site.baseurl }}/" class="back-link">&larr; All documents</a>
+      </nav>
+    {% endif %}
+  </header>
+
+  <div class="document-content">
+    {{ content }}
+  </div>
+
+  <footer class="document-footer">
+    <hr>
+    <p>
+      <small>
+        &copy; {{ site.time | date: "%Y" }} Alston Albarado.
+        All rights reserved. |
+        <a href="{{ site.baseurl }}/">App Legal Documents</a> |
+        <a href="mailto:alston.albarado@gmail.com">alston.albarado@gmail.com</a>
+      </small>
+    </p>
+  </footer>
+</article>
