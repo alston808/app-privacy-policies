@@ -9,6 +9,7 @@
 #   version     — optional app version
 
 layout: app-index
+title: "BeatVibrator — Legal Documents"
 app: beatvibrator
 app_display: BeatVibrator
 description: A mobile app for haptic rhythm feedback.
