@@ -33,7 +33,7 @@ jobs:
       - name: Install dependencies
         run: |
           gem install jekyll jekyll-sitemap jemoji minima
-          bundle exec jekyll build
+          jekyll build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
