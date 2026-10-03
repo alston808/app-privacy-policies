@@ -1,15 +1,18 @@
 ---
-# This file overrides the theme's assets/css/main.scss
+# This file overrides the theme's assets/css/main.scss.
 # It imports the theme styles and appends custom overrides.
+# In Minima, the theme stylesheet is at _sass/minima.scss so we @import it.
 ---
 
 @charset "utf-8";
 
-// Import theme styles
 @import "minima";
 
+// ============================================================================
 // Custom overrides for legal documents
-// ----------------------------------------------------------------------------
+// These styles enhance the layout and presentation of privacy policies,
+// terms of service, EULAs, and the 404 page.
+// ============================================================================
 
 .legal-document {
   max-width: 800px;
