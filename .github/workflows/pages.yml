@@ -6,7 +6,6 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [main]
-  # Allow manual trigger
   workflow_dispatch:
 
 permissions:
@@ -15,14 +14,10 @@ permissions:
   id-token: write
 
 concurrency:
-  # Cancel in-progress deployments when a new commit is pushed.
   group: pages
   url: ${{ steps.deployment.outputs.page_url }}
 
 jobs:
-  # ------------------------------------------------------------------
-  # 1. Build the Jekyll site
-  # ------------------------------------------------------------------
   build:
     runs-on: ubuntu-latest
     steps:
@@ -32,19 +27,18 @@ jobs:
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
-          bundler-cache: true
+          ruby-version: '3.2'
 
-      - name: Build site
-        run: bundle exec jekyll build
+      - name: Install dependencies
+        run: |
+          gem install jekyll jekyll-sitemap jemoji minima
+          bundle exec jekyll build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
 
-  # ------------------------------------------------------------------
-  # 2. Deploy to GitHub Pages
-  # ------------------------------------------------------------------
   deploy:
     needs: build
     runs-on: ubuntu-latest
