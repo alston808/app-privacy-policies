@@ -29,11 +29,10 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
+          bundler-cache: true
 
-      - name: Install dependencies
-        run: |
-          gem install jekyll jekyll-sitemap jemoji minima
-          jekyll build
+      - name: Build site
+        run: bundle exec jekyll build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

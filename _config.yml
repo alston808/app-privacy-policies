@@ -18,8 +18,6 @@ plugins:
 # Sass overrides
 sass:
   style: compressed
-  load_paths:
-    - _sass
 
 # Minima theme options
 minima:
