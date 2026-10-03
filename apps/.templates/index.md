@@ -1,34 +1,37 @@
-# Template for new apps
+# Template for new app landing pages
 #
-# To add a new app, copy this directory and rename:
-#   cp -r apps/.templates apps/NEWAPP_NAME
+# To add a new app:
+#   1. Copy this file to apps/NEWAPP_NAME/index.md
+#   2. Update all front matter values (app, app_display, links, features, etc.)
+#   3. Add a card to the root index.md
+#   4. Commit and push
 #
-# Then edit each file, replacing placeholders:
-#   APP_NAME       → lowercase app name (e.g. "mygame")
-#   App Name       → human-readable name (e.g. "My Game")
-#   APP_DESCRIPTION → short description
-#   APP_VERSION    → app version string
+# URL will be: https://alston808.github.io/NEWAPP_NAME/
 #
-# Naming convention for files:
-#   apps/<app_name>/index.md   → app index page   (URL: /<app_name>/)
-#   apps/<app_name>/privacy.md → privacy policy   (URL: /<app_name>/privacy)
-#   apps/<app_name>/terms.md   → terms of service (URL: /<app_name>/terms)
-#   apps/<app_name>/eula.md    → EULA             (URL: /<app_name>/eula)
-#
-# After creating the files:
-#   git add -A && git commit -m "feat: add APP_NAME docs" && git push
-#
-# Then add a link card to the root index.md.
-# ---------------------------------------------------------------------------
-
 ---
-layout: app-index
+layout: app-page
 title: "App Name — Legal Documents"
+description: "Short description of your app."
+permalink: /APP_NAME/
+
+# App configuration
 app: APP_NAME
 app_display: App Name
-description: APP_DESCRIPTION
-version: APP_VERSION
-permalink: /APP_NAME/
----
+app_icon: appicon.png
+app_description: A short description of what your app does.
+app_price: Free
+playstore_link: https://play.google.com/store/apps/details?id=your.app.id
+appstore_link:
 
-This page lists the legal documents for the **App Name** app.
+# Cover image (optional)
+cover_image: headerimage.png
+
+# Feature list (FontAwesome 6 icons from https://fontawesome.com/icons)
+features:
+  - title: Feature 1
+    description: Describe your first feature.
+    fontawesome_icon_name: star
+  - title: Feature 2
+    description: Describe your second feature.
+    fontawesome_icon_name: magic
+---

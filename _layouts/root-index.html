@@ -1,0 +1,62 @@
+---
+# Layout for the root index page (placeholder listing all apps).
+layout: default
+---
+
+<div style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
+
+  <h1 style="text-align: center; font-size: 2.8rem; margin-bottom: 0.5rem;">App Legal Documents</h1>
+  <p style="text-align: center; color: #57606a; font-size: 1.5rem; margin-bottom: 2rem;">
+    Privacy policies, terms of service, and EULAs for mobile apps published by
+    <strong>Alston Albarado</strong>.
+  </p>
+
+  <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e1e4e8;">
+
+  <h2 style="font-size: 1.8rem; margin-bottom: 1rem;">📱 Apps</h2>
+  <p style="color: #57606a; margin-bottom: 1.5rem;">
+    Click on an app below to view its legal documents.
+  </p>
+
+  <div class="app-grid">
+
+    {# Add new apps here — each card links to the app's index page #}
+    <div class="app-card">
+      <h3>BeatVibrator</h3>
+      <p>A mobile app for haptic rhythm feedback.</p>
+      <a href="{{ site.baseurl }}/beatvibrator/" class="app-link">View documents →</a>
+    </div>
+
+  </div>
+
+  <hr style="margin: 2rem 0; border: none; border-top: 1px solid #e1e4e8;">
+
+  <h2 style="font-size: 1.8rem; margin-bottom: 1rem;">📄 Document Types</h2>
+  <table style="width: 100%; border-collapse: collapse; margin-bottom: 2rem;">
+    <thead>
+      <tr style="border-bottom: 2px solid #e1e4e8;">
+        <th style="padding: 0.5rem; text-align: left;">Type</th>
+        <th style="padding: 0.5rem; text-align: left;">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding: 0.5rem; border-bottom: 1px solid #e1e4e8;"><strong>Privacy Policy</strong></td>
+        <td style="padding: 0.5rem; border-bottom: 1px solid #e1e4e8;">How we collect, use, and protect your personal data.</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.5rem; border-bottom: 1px solid #e1e4e8;"><strong>Terms of Service</strong></td>
+        <td style="padding: 0.5rem; border-bottom: 1px solid #e1e4e8;">Rules and guidelines for using the app.</td>
+      </tr>
+      <tr>
+        <td style="padding: 0.5rem;"><strong>EULA</strong></td>
+        <td style="padding: 0.5rem;">End-user license agreement for software use.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="color: #57606a; font-size: 1.3rem;">
+    📧 <a href="mailto:alston.albarado@gmail.com">alston.albarado@gmail.com</a>
+  </p>
+
+</div>

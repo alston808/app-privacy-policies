@@ -1,0 +1,31 @@
+<header>
+  <div class="headerBackground">
+    <div class="container">
+      <div class="logo">
+        {% if page.app_icon %}
+          <img src="{{ site.baseurl }}/assets/img/{{ page.app_icon }}" alt="{{ page.app_display }} icon" width="40" height="40">
+        {% else %}
+          <img src="{{ site.baseurl }}/assets/img/appicon.png" alt="App icon" width="40" height="40">
+        {% endif %}
+        {% if page.app_display %}
+          <p>{{ page.app_display }}</p>
+        {% else %}
+          <p>App Legal Documents</p>
+        {% endif %}
+      </div>
+
+      <nav>
+        <ul>
+          {% if page.app %}
+            <li><a href="{{ site.baseurl }}/" target="_self">All Apps</a></li>
+            <li><a href="{{ site.baseurl }}/{{ page.app }}/" target="_self">{{ page.app_display }}</a></li>
+            <li><a href="{{ site.baseurl }}/{{ page.app }}/privacy" target="_self">Privacy</a></li>
+            <li><a href="{{ site.baseurl }}/{{ page.app }}/terms" target="_self">Terms</a></li>
+          {% else %}
+            <li><a href="{{ site.baseurl }}/" target="_self">Home</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,35 @@
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <title>{{ page.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+
+  <!-- Favicon (app icon if available) -->
+  {% if page.app_icon %}
+    <link rel="shortcut icon" href="{{ site.baseurl }}/assets/img/{{ page.app_icon }}">
+  {% else %}
+    <link rel="shortcut icon" href="{{ site.baseurl }}/assets/img/appicon.png">
+  {% endif %}
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  <meta property="og:type" content="{% if page.layout == 'page' %}article{% else %}website{% endif %}">
+  <meta property="og:url" content="{{ site.baseurl }}{{ page.url | default: '' }}">
+
+  <!-- StyleSheet -->
+  <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/main.css">
+
+  <!-- FontAwesome for feature icons and social links -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmc3V83CDa2kwXjCM7kIOHOqP9LZK5EQljiVYg3cIObc8S6ITz2tPIR4s5cJp0K5Ur6Y5kK5j5X5X5X5Xw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Smart App Banner (if app store ID is provided) -->
+  {% if page.app_store_id %}
+    <meta name="apple-itunes-app" content="app-id={{ page.app_store_id }}">
+  {% endif %}
+</head>

@@ -1,44 +1,34 @@
-# GitHub Pages configuration for App Legal Documents
-# Uses Jekyll (built into GitHub Pages) to render Markdown as static HTML.
-#
-# URL structure:
-#   https://alston808.github.io/                    → root index (lists all apps)
-#   https://alston808.github.io/beatvibrator/       → app index page
-#   https://alston808.github.io/beatvibrator/privacy → privacy policy
-#   https://alston808.github.io/beatvibrator/terms   → terms of service
-#   https://alston808.github.io/beatvibrator/eula    → end-user license agreement
+# ─────────────────────────────────────────────────────────────────────────────
+# GitHub Pages configuration — App Legal Documents
+# Multi-app landing pages with privacy policies, terms, and EULAs.
+# Based on the automatic-app-landing-page template (adapted for Android/multi-app).
+# ─────────────────────────────────────────────────────────────────────────────
 
+# Site info
 title: App Legal Documents
 subtitle: Privacy policies, terms, and legal documents for mobile apps
-description: >-
-  A collection of privacy policies, terms of service, end-user license
-  agreements, and other legal documents for apps published by Alston Albarado.
+description: Legal documents for apps published by Alston Albarado.
+
+# No baseurl needed for user pages (https://alston808.github.io)
 baseurl: ""
 url: "https://alston808.github.io"
 
-# Appearance
-theme: minima
+# Appearance — no theme; we use custom layouts and SCSS.
+# (Minima's main.scss was overriding our custom stylesheet.)
 plugins:
   - jekyll-sitemap
-  - jemoji
 
-# Sass — using compressed output for production
+# Sass
 sass:
   style: compressed
-
-# Minima theme options
-minima:
-  scheme: dark
-  table_of_contents:
-    enabled: true
 
 # Markdown rendering
 markdown: kramdown
 kramdown:
   input: GFM
-  syntax_monitors:
-    - callrouth
 
-# Exclude template files from the build
+# Exclude
 exclude:
+  - .sass-cache
+  - .jekyll-cache
   - apps/.templates

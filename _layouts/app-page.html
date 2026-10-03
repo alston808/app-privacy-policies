@@ -1,0 +1,83 @@
+---
+# Layout for per-app landing pages (the "home" for a single app).
+# Shows a cover header, app icon, download buttons, features, and
+# legal document links.
+#
+# Front matter variables used:
+#   page.app          — lowercase app identifier (e.g. "beatvibrator")
+#   page.app_display  — human-readable name
+#   page.app_icon     — icon filename in assets/img/
+#   page.app_description — short description
+#   page.app_price    — price string (e.g. "Free")
+#   page.playstore_link — Google Play URL
+#   page.appstore_link  — App Store URL (optional)
+#   page.features     — array of {title, description, fontawesome_icon_name}
+#   page.cover_image  — cover image path (optional)
+# ---------------------------------------------------------------------------
+
+layout: default
+---
+
+<!-- Cover image header -->
+<div class="appCover"
+     {% if page.cover_image %}style="background-image: url('{{ site.baseurl }}/assets/img/{{ page.cover_image }}');"
+     {% else %}style="background-image: url('{{ site.baseurl }}/assets/img/headerimage.png');"
+     {% endif %}>
+  <div class="container" style="text-align: center;">
+    {% if page.app_icon %}
+      <img class="appIconLarge" src="{{ site.baseurl }}/assets/img/{{ page.app_icon }}" alt="{{ page.app_display }} icon">
+    {% endif %}
+    <h1 style="color: #fff; font-size: 3rem; margin-bottom: 0.5rem;">{{ page.app_display }}</h1>
+    {% if page.app_price %}
+      <p class="appPrice" style="color: #fff; font-size: 1.5rem;">{{ page.app_price }}</p>
+    {% endif %}
+    {% if page.app_description %}
+      <p class="appDescription">{{ page.app_description }}</p>
+    {% endif %}
+    {% if page.playstore_link or page.appstore_link %}
+      <div class="downloadButtonsContainer">
+        {% if page.playstore_link %}
+          <a href="{{ page.playstore_link }}" target="_blank" rel="noopener">
+            <img class="playStore" src="{{ site.baseurl }}/assets/img/playstore.png" alt="Get it on Google Play">
+          </a>
+        {% endif %}
+        {% if page.appstore_link %}
+          <a href="{{ page.appstore_link }}" target="_blank" rel="noopener">
+            <img class="appStore" src="{{ site.baseurl }}/assets/img/appstore.png" alt="Get it on the App Store">
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- Features -->
+{% include features.html %}
+
+<!-- Legal Documents -->
+<div class="container" style="max-width: 700px; margin: 0 auto 4rem;">
+  <h2 style="text-align: center; margin-bottom: 1.5rem;">Legal Documents</h2>
+  <ul class="doc-list">
+    <li>
+      <a href="{{ site.baseurl }}/{{ page.app }}/privacy">
+        <i class="fas fa-shield-alt"></i> Privacy Policy
+      </a>
+    </li>
+    <li>
+      <a href="{{ site.baseurl }}/{{ page.app }}/terms">
+        <i class="fas fa-file-contract"></i> Terms of Service
+      </a>
+    </li>
+    <li>
+      <a href="{{ site.baseurl }}/{{ page.app }}/eula">
+        <i class="fas fa-file-invoice"></i> End-User License Agreement
+      </a>
+    </li>
+  </ul>
+
+  <div style="text-align: center;">
+    <a href="{{ site.baseurl }}/" class="back-link">
+      <i class="fas fa-arrow-left"></i> Back to all apps
+    </a>
+  </div>
+</div>

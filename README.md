@@ -1,150 +1,146 @@
-# App Privacy Policies & Terms of Service
+# App Privacy Policies & Legal Documents
 
-A collection of privacy policies, terms of service, end-user license agreements,
-and other legal documents for apps published by **Alston Albarado**.
+A multi-app landing page site for privacy policies, terms of service, and EULAs
+for mobile apps published by **Alston Albarado** — built with Jekyll on GitHub Pages,
+adapted from the [automatic-app-landing-page](https://github.com/emilbaehr/automatic-app-landing-page)
+template.
 
-## 🌐 Live Site
+**Live site:** https://alston808.github.io/
 
-**Root index (lists all apps):**
-https://alston808.github.io/app-privacy-policies/
+## 📱 URL Structure
 
-**BeatVibrator app index:**
-https://alston808.github.io/app-privacy-policies/beatvibrator/
-
-**BeatVibrator privacy policy:**
-https://alston808.github.io/app-privacy-policies/beatvibrator/privacy
-
-**BeatVibrator terms of service:**
-https://alston808.github.io/app-privacy-policies/beatvibrator/terms
-
-**BeatVibrator EULA:**
-https://alston808.github.io/app-privacy-policies/beatvibrator/eula
-
-## 📋 Overview
-
-This repository is a **GitHub Pages** project built with **[Jekyll](https://jekyllrb.com)**
-(the static site generator natively supported by GitHub Pages). It renders
-Markdown files into clean, readable HTML privacy policies, terms, and other
-legal documents — organized **per app**.
+| Page | URL |
+|------|-----|
+| Root index | `https://alston808.github.io/` |
+| App index | `https://alston808.github.io/beatvibrator/` |
+| Privacy policy | `https://alston808.github.io/beatvibrator/privacy` |
+| Terms of service | `https://alston808.github.io/beatvibrator/terms` |
+| EULA | `https://alston808.github.io/beatvibrator/eula` |
 
 ## 📁 Project Structure
 
 ```
-app-privacy-policies/
-├── _config.yml                 # Jekyll configuration (theme, markdown, etc.)
-├── index.md                    # Root index — placeholder listing all apps
-├── README.md                   # This file
-├── 404.md                      # Custom 404 page
+.
+├── _config.yml                    # Jekyll config
+├── index.md                       # Root index — placeholder listing all apps
+├── 404.md                         # Custom 404 page
+├── main.scss                      # SCSS entry point (imports _sass/)
+├── _sass/
+│   ├── base.scss                  # Core styles (typography, layout, components)
+│   ├── layout.scss                # Grid/layout styles
+│   └── github-markdown.scss       # Markdown body styling
 ├── _layouts/
-│   ├── app-index.html          # Layout for per-app index pages
-│   └── document.html           # Layout for legal documents (privacy, terms, eula)
-├── apps/
-│   ├── .templates/             # Templates for adding new apps
-│   │   ├── index.md
-│   │   ├── privacy.md
-│   │   ├── terms.md
-│   │   └── eula.md
-│   └── beatvibrator/           # The first app
-│       ├── index.md            # → /beatvibrator/
-│       ├── privacy.md          # → /beatvibrator/privacy
-│       ├── terms.md            # → /beatvibrator/terms
-│       └── eula.md             # → /beatvibrator/eula
-└── .gitignore
+│   ├── default.html               # Base HTML wrapper
+│   ├── app-page.html              # App landing page layout
+│   ├── page.html                  # Legal document layout (privacy/terms/eula)
+│   └── root-index.html            # Root index placeholder layout
+├── _includes/
+│   ├── head.html                  # <head> with meta tags, CSS, FontAwesome
+│   ├── header.html                # Site header with navigation
+│   ├── footer.html                # Footer with social links
+│   ├── features.html              # Feature list rendering
+│   └── appstoreimages.html        # Apple App Store image fetching (optional)
+├── assets/
+│   ├── css/main.scss              # Compiled stylesheet
+│   └── img/                       # App icons, header images, buttons
+└── apps/
+    ├── .templates/                # Templates for new apps
+    │   ├── index.md
+    │   ├── privacy.md
+    │   ├── terms.md
+    │   └── eula.md
+    └── beatvibrator/              # First app
+        ├── index.md
+        ├── privacy.md
+        ├── terms.md
+        └── eula.md
 ```
 
 ## 📝 How to Add a New App
 
-### Step 1 — Copy the template directory
+### Step 1 — Copy the templates
 
 ```bash
-cp -r apps/.templates apps/NEWAPP_NAME
+cd apps/
+cp -r .templates/newapp  # Replace "newapp" with your app's lowercase name
 ```
 
-Replace `NEWAPP_NAME` with the lowercase app name (e.g., `mygame`).
+### Step 2 — Edit the app index page
 
-### Step 2 — Edit each file
+Edit `apps/newapp/index.md` and update the front matter:
 
-Replace the placeholders in each file:
+```yaml
+app: newapp             # lowercase, no spaces (becomes URL path)
+app_display: "My App"   # human-readable name
+app_icon: appicon.png   # icon in assets/img/
+app_description: "What your app does."
+app_price: "Free"       # or "$2.99"
+playstore_link: https://play.google.com/store/apps/details?id=your.app.id
+features:
+  - title: "Feature 1"
+    description: "Description here."
+    fontawesome_icon_name: "star"
+```
 
-| Placeholder | Replace with |
-|-------------|-------------|
-| `APP_NAME` | lowercase app name (e.g., `mygame`) |
-| `App Name` | human-readable name (e.g., `My Game`) |
-| `APP_DESCRIPTION` | short description |
-| `APP_VERSION` | app version string |
+### Step 3 — Edit the document templates
 
-Each template file has a `permalink` that determines the URL:
-- `apps/<app_name>/index.md` → `https://alston808.github.io/<app_name>/`
-- `apps/<app_name>/privacy.md` → `https://alston808.github.io/<app_name>/privacy`
-- `apps/<app_name>/terms.md` → `https://alston808.github.io/<app_name>/terms`
-- `apps/<app_name>/eula.md` → `https://alston808.github.io/<app_name>/eula`
+Update `apps/newapp/privacy.md`, `terms.md`, and `eula.md` — replace the
+placeholder content with your actual legal text.
 
-### Step 3 — Add to the root index
+### Step 4 — Add to the root index
 
-Edit `index.md` and add a new app card in the `app-grid` div:
+Edit `index.md` (which uses `layout: root-index`) and add a card for your new app:
 
 ```html
 <div class="app-card">
-  <h3>Your New App</h3>
+  <h3>My App</h3>
   <p>Short description.</p>
-  <a href="{{ site.baseurl }}/your-new-app/" class="app-link">View documents →</a>
+  <a href="/my-app/" class="app-link">View documents →</a>
 </div>
 ```
 
-### Step 4 — Commit and push
+### Step 5 — Upload assets
+
+Upload your app icon and header image to `assets/img/`.
+
+### Step 6 — Commit and push
 
 ```bash
 git add -A
-git commit -m "docs: add legal documents for YourNewApp"
+git commit -m "feat: add My App legal documents"
 git push
-```
-
-The site will auto-deploy via GitHub Pages within a few seconds.
-
-## 📄 Document Front Matter
-
-Each legal document (`.md` file) uses YAML front matter. Here are the required fields:
-
-```yaml
----
-title: "AppName — Privacy Policy"       # Page title (browser tab)
-app: appname                             # Lowercase ID (used in URL and back-link)
-app_display: AppName                     # Human-readable name
-doc_type: Privacy Policy                 # "Privacy Policy", "Terms of Service", "EULA"
-effective_date: 2026-10-03              # When the document took effect (YYYY-MM-DD)
-last_updated: 2026-10-03                # Last modification (YYYY-MM-DD)
-version: v1.0                           # Optional version string
-layout: document                         # Must be "document"
-permalink: /appname/privacy              # Explicit URL path
----
 ```
 
 ## 🎨 Customization
 
-### Root index page
+### Theme colors
 
-Edit `index.md` to:
-- Add/remove app cards in the `.app-grid` div
-- Update the site title and description in `_config.yml`
-- Change the contact email in the layouts
+All colors are configurable in `_sass/base.scss`:
 
-### Theme
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `$body-color` | `#ffffff` | Page background |
+| `$accent-color` | `#1d63ea` | Links and accent elements |
 
-The site uses the [Minima](https://github.com/jekyll/minima) theme (Jekyll's
-default). Custom styles are inlined in the layouts for reliability.
+### Header image
+
+Replace `assets/img/headerimage.png` with your own cover image (recommended size: 1200×400px).
+
+### App icon
+
+Set `app_icon` in each app's `index.md` front matter to the filename in `assets/img/`.
 
 ## 🚀 Deployment
 
-This site auto-deploys to GitHub Pages on every push to `main`:
-
-1. Go to **Settings → Pages** in the GitHub repo.
-2. Set **Source** to `Deploy from a branch` → `main` → `/ (root)`.
-3. Save. GitHub Pages will build and publish automatically.
+This is a **GitHub User Pages** site — it auto-deploys from the `main` branch of
+the `alston808/alston808.github.io` repository. Changes go live within seconds
+of pushing.
 
 ## 📄 License
 
-The content of these legal documents is © Alston Albarado.
-The site template and structure are provided as-is for reuse.
+The legal document content is © Alston Albarado.
+The site template is based on [automatic-app-landing-page](https://github.com/emilbaehr/automatic-app-landing-page)
+(licensed MIT).
 
 ## 📧 Contact
 
