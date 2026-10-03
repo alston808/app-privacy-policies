@@ -15,7 +15,8 @@ permissions:
 
 concurrency:
   group: pages
-  url: ${{ steps.deployment.outputs.page_url }}
+  # Prevents concurrent deployments; cancels in-progress runs on new push.
+  cancel-in-progress: false
 
 jobs:
   build:
