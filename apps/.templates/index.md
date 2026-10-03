@@ -23,6 +23,7 @@
 
 ---
 layout: app-index
+title: "App Name — Legal Documents"
 app: APP_NAME
 app_display: App Name
 description: APP_DESCRIPTION
