@@ -1,24 +1,19 @@
 ---
-# Custom layout for legal documents.
+# Custom layout for legal documents (privacy, terms, eula).
 # Provides a header with app name + document type, metadata badges, and a
-# table of contents. The document body (markdown) is rendered below.
+# back-link navigation to the app's index page.
 #
-# Variables available (set in each document's front matter):
-#   page.app          — lowercase app identifier (used in CSS anchor links)
+# Front matter variables used (set in each document's front matter):
+#   page.app          — lowercase app identifier (e.g. "beatvibrator")
 #   page.app_display  — human-readable app name
 #   page.doc_type     — "Privacy Policy" | "Terms of Service" | "EULA"
 #   page.effective_date
 #   page.last_updated
 #   page.version
 layout: default
-
-# Inline CSS for legal document styling.
-# This is inlined rather than pulled from main.scss to ensure it loads
-# regardless of the Sass build configuration.
 ---
 
 <style>
-  /* Custom styles for legal documents */
   .legal-document {
     max-width: 800px;
     margin: 0 auto;
@@ -50,7 +45,6 @@ layout: default
   .back-link:hover {
     text-decoration: underline;
   }
-  /* Document content */
   .document-content {
     line-height: 1.7;
   }
@@ -65,35 +59,12 @@ layout: default
     border-radius: 3px;
     font-size: 0.9em;
   }
-  /* Document footer */
   .document-footer {
     margin-top: 3rem;
     padding-top: 1.5rem;
     border-top: 1px solid #d0d7de;
     color: #57606a;
     font-size: 0.85rem;
-  }
-  /* 404 page */
-  .not-found {
-    text-align: center;
-    padding: 3rem 1rem;
-  }
-  .not-found h1 {
-    font-size: 4rem;
-    color: #4688f0;
-    margin-bottom: 0;
-  }
-  .not-found .btn {
-    display: inline-block;
-    margin-top: 1.5rem;
-    padding: 0.6rem 1.5rem;
-    background: #4688f0;
-    color: white;
-    text-decoration: none;
-    border-radius: 6px;
-  }
-  .not-found .btn:hover {
-    background: #2f70c7;
   }
 </style>
 
@@ -119,11 +90,10 @@ layout: default
       {% endif %}
     </div>
 
-    {% if page.doc_type == "Privacy Policy" %}
-      <nav class="document-nav" aria-label="Document navigation">
-        <a href="{{ site.baseurl }}/" class="back-link">&larr; All documents</a>
-      </nav>
-    {% endif %}
+    <!-- Back link: goes to the app's index page -->
+    <a href="{{ site.baseurl }}/{{ page.app }}/" class="back-link">
+      &larr; {{ page.app_display }} documents
+    </a>
   </header>
 
   <div class="document-content">
@@ -137,6 +107,7 @@ layout: default
         &copy; {{ site.time | date: "%Y" }} Alston Albarado.
         All rights reserved. |
         <a href="{{ site.baseurl }}/">App Legal Documents</a> |
+        <a href="{{ site.baseurl }}/{{ page.app }}/">{{ page.app_display }}</a> |
         <a href="mailto:alston.albarado@gmail.com">alston.albarado@gmail.com</a>
       </small>
     </p>

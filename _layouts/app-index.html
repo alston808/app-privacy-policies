@@ -1,0 +1,131 @@
+---
+# Layout for per-app index pages.
+# Shows the app name, description, and links to each document type.
+#
+# Front matter variables used:
+#   page.app        — lowercase app identifier (for CSS class)
+#   page.app_display — human-readable app name
+#   page.description — short description of the app
+#   page.version     — optional app version
+#   page.icon        — optional emoji/icon
+layout: default
+
+---
+
+<style>
+  .app-index {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+  .app-header {
+    border-bottom: 2px solid #4688f0;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .app-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+  }
+  .app-meta .meta-item {
+    background: #f6f8fa;
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+  }
+  .app-doc-list {
+    list-style: none;
+    padding: 0;
+  }
+  .app-doc-list li {
+    margin: 0.75rem 0;
+    padding: 0.75rem 1rem;
+    background: #f6f8fa;
+    border-radius: 6px;
+    border-left: 4px solid #4688f0;
+  }
+  .app-doc-list a {
+    font-weight: 600;
+    color: #4688f0;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .app-doc-list .doc-type {
+    display: inline-block;
+    min-width: 180px;
+    font-weight: 600;
+    color: #24292f;
+  }
+  .back-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    color: #4688f0;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .document-footer {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #d0d7de;
+    color: #57606a;
+    font-size: 0.85rem;
+  }
+</style>
+
+<div class="app-index">
+  <header class="app-header">
+    <h1>{{ page.app_display }}</h1>
+    {% if page.description %}
+      <p>{{ page.description }}</p>
+    {% endif %}
+
+    <div class="app-meta">
+      {% if page.app_display %}
+        <span class="meta-item"><strong>App:</strong> {{ page.app_display }}</span>
+      {% endif %}
+      {% if page.version %}
+        <span class="meta-item"><strong>Version:</strong> {{ page.version }}</span>
+      {% endif %}
+    </div>
+  </header>
+
+  <h2>Legal Documents</h2>
+  <ul class="app-doc-list">
+    <li>
+      <span class="doc-type">Privacy Policy:</span>
+      <a href="{{ site.baseurl }}/{{ page.app }}/privacy">Read the {{ page.app_display }} Privacy Policy</a>
+    </li>
+    <li>
+      <span class="doc-type">Terms of Service:</span>
+      <a href="{{ site.baseurl }}/{{ page.app }}/terms">Read the {{ page.app_display }} Terms of Service</a>
+    </li>
+    <li>
+      <span class="doc-type">End-User License:</span>
+      <a href="{{ site.baseurl }}/{{ page.app }}/eula">Read the {{ page.app_display }} EULA</a>
+    </li>
+  </ul>
+
+  <a href="{{ site.baseurl }}/" class="back-link">&larr; All apps</a>
+
+  <footer class="document-footer">
+    <hr>
+    <p>
+      <small>
+        &copy; {{ site.time | date: "%Y" }} Alston Albarado.
+        All rights reserved. |
+        <a href="{{ site.baseurl }}/">App Legal Documents</a> |
+        <a href="mailto:alston.albarado@gmail.com">alston.albarado@gmail.com</a>
+      </small>
+    </p>
+  </footer>
+</div>
+
+{{ content }}

@@ -1,20 +1,15 @@
 ---
-# Privacy policy for the BeatVibrator app
-# The filename determines the URL path: /privacy/beatvibrator/index.html
-# Naming convention: <app-name>-privacy-policy.md   →   /privacy/<app-name>/
+# BeatVibrator Privacy Policy
+# URL: https://alston808.github.io/beatvibrator/privacy
 #
-# Required YAML front matter:
-#   - title:         shown in the page <title> and header
-#   - app:           the app this document belongs to
-#   - app_display:   human-readable app name
-#   - doc_type:      "Privacy Policy"
-#   - effective_date: when the policy took effect
-#   - last_updated:  last modification date (optional)
-#   - version:       policy version string (optional)
-#   - layout:        "document" (custom layout defined in _layouts/)
-#
-# Add new apps by creating files in _privacy/ following this convention.
-# No code changes are required — Jekyll collections handle the rest.
+# Front matter variables:
+#   app         — lowercase app identifier (used in URL and back-link)
+#   app_display — human-readable app name
+#   doc_type    — document type label
+#   effective_date — when the policy took effect (YYYY-MM-DD)
+#   last_updated   — last modification date (YYYY-MM-DD)
+#   version         — policy version string
+#   layout          — must be "document"
 
 title: "BeatVibrator — Privacy Policy"
 app: beatvibrator
@@ -24,6 +19,7 @@ effective_date: 2026-10-03
 last_updated: 2026-10-03
 version: v1.0
 layout: document
+permalink: /beatvibrator/privacy
 ---
 
 **Privacy Policy**

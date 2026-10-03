@@ -1,5 +1,12 @@
 # GitHub Pages configuration for App Legal Documents
 # Uses Jekyll (built into GitHub Pages) to render Markdown as static HTML.
+#
+# URL structure:
+#   https://alston808.github.io/                    → root index (lists all apps)
+#   https://alston808.github.io/beatvibrator/       → app index page
+#   https://alston808.github.io/beatvibrator/privacy → privacy policy
+#   https://alston808.github.io/beatvibrator/terms   → terms of service
+#   https://alston808.github.io/beatvibrator/eula    → end-user license agreement
 
 title: App Legal Documents
 subtitle: Privacy policies, terms, and legal documents for mobile apps
@@ -7,7 +14,7 @@ description: >-
   A collection of privacy policies, terms of service, end-user license
   agreements, and other legal documents for apps published by Alston Albarado.
 baseurl: ""
-url: "https://alston808.github.io/app-privacy-policies"
+url: "https://alston808.github.io"
 
 # Appearance
 theme: minima
@@ -15,7 +22,7 @@ plugins:
   - jekyll-sitemap
   - jemoji
 
-# Sass overrides
+# Sass — using compressed output for production
 sass:
   style: compressed
 
@@ -25,25 +32,6 @@ minima:
   table_of_contents:
     enabled: true
 
-# Collections — one per document type, rooted at the file system path.
-# Each Markdown file in a collection becomes a page at the configured permalink.
-collections:
-  privacy:
-    output: true
-    output_dir: /privacy
-    permalink: /privacy/:name/
-    sort_reversed: false
-  terms:
-    output: true
-    output_dir: /terms
-    permalink: /terms/:name/
-    sort_reversed: false
-  eula:
-    output: true
-    output_dir: /eula
-    permalink: /eula/:name/
-    sort_reversed: false
-
 # Markdown rendering
 markdown: kramdown
 kramdown:
@@ -51,8 +39,6 @@ kramdown:
   syntax_monitors:
     - callrouth
 
-# Exclude template files from the build (they start with a dot)
+# Exclude template files from the build
 exclude:
-  - _privacy/.template.md
-  - _terms/.template.md
-  - _eula/.template.md
+  - apps/.templates

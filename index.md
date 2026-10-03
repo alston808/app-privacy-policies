@@ -4,25 +4,68 @@ title: App Legal Documents
 permalink: /
 ---
 
-# App Privacy Policies & Terms
+<style>
+  .app-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  @media (min-width: 700px) {
+    .app-grid {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+  .app-card {
+    flex: 1 1 300px;
+    padding: 1.5rem;
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+  }
+  .app-card h3 {
+    margin-top: 0;
+    color: #24292f;
+  }
+  .app-link {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #4688f0;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .app-link:hover {
+    text-decoration: underline;
+  }
+</style>
 
-A collection of privacy policies, terms of service, end-user license agreements,
-and other legal documents for apps published by **Alston Albarado**.
+# App Legal Documents
 
-Each document is organized by app name and document type. Click a link below
-to read the full policy.
+A collection of privacy policies, terms of service, end-user license
+agreements, and other legal documents for apps published by
+**Alston Albarado**.
 
 ---
 
 ## 📱 Apps
 
-### BeatVibrator
+Click on an app below to view its legal documents.
 
-| Document | Link |
-|----------|------|
-| **Privacy Policy** | [Read the BeatVibrator Privacy Policy](/privacy/beatvibrator/) |
+<div class="app-grid">
 
-*(More apps will be added as they are released.)*
+{% comment %}
+  Add new apps here — each entry links to the app's index page.
+  The app's index page then links to its privacy policy, terms, and EULA.
+{% endcomment %}
+
+  <div class="app-card">
+    <h3>BeatVibrator</h3>
+    <p>A mobile app for haptic rhythm feedback.</p>
+    <a href="{{ site.baseurl }}/beatvibrator/" class="app-link">View documents →</a>
+  </div>
+
+</div>
 
 ---
 
