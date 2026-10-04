@@ -1,21 +1,4 @@
-# Build output
-_site/
-.jekyll-cache/
-.sass-cache/
-.gem/
-.bundle/
-
-# Dependencies
-node_modules/
-vendor/
-
-# Logs
-*.log
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Environment
-.env
-.env.local
+.bundle
+.sass-cache
+_site
+Gemfile.lock

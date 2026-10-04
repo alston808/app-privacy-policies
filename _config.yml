@@ -1,34 +1,131 @@
 # ─────────────────────────────────────────────────────────────────────────────
-# GitHub Pages configuration — App Legal Documents
-# Multi-app landing pages with privacy policies, terms, and EULAs.
-# Based on the automatic-app-landing-page template (adapted for Android/multi-app).
+# App Legal Documents — automatic-app-landing-page template (Android-adapted)
+# Based on: https://github.com/emilbaehr/automatic-app-landing-page
 # ─────────────────────────────────────────────────────────────────────────────
 
-# Site info
-title: App Legal Documents
-subtitle: Privacy policies, terms, and legal documents for mobile apps
-description: Legal documents for apps published by Alston Albarado.
+#page title
+page_title                                : BeatVibrator — Legal Documents
 
-# No baseurl needed for user pages (https://alston808.github.io)
-baseurl: ""
-url: "https://alston808.github.io"
+# App Info
+# iOS App ID left blank so all app data is set manually (Android-focused).
+ios_app_id                                :
+ios_app_country                           : us
 
-# Appearance — no theme; we use custom layouts and SCSS.
-# (Minima's main.scss was overriding our custom stylesheet.)
-plugins:
-  - jekyll-sitemap
+appstore_link                             :                                     # Leave blank for Android-only.
+playstore_link                            : https://play.google.com/store/apps/details?id=com.alstonalbarado.beatvibrator
+presskit_download_link                    :
 
-# Sass
+app_icon                                  : assets/squircle.svg                 # App icon (Android squircle style).
+app_name                                  : BeatVibrator
+app_price                                 : Free
+app_description                           : A mobile app for haptic rhythm feedback that syncs vibrations to music beats.
+
+enable_smart_app_banner                   : false                             # iOS-only smart app banner — disabled for Android.
+
+
+
+# Information About Yourself
+your_name                                 : Alston Albarado
+your_link                                 : https://alston808.github.io
+your_city                                 : Honolulu
+email_address                             : alston.albarado@gmail.com
+linkedin_username                         :
+facebook_username                         :
+instagram_username                        :
+twitter_username                          :
+github_username                           : alston808
+youtube_username                          :
+mastodon_link                             :
+
+
+
+# Feature List                            Edit, add or remove features to be presented.
+features                                  :
+
+  - title                                 : Haptic Rhythm Sync
+    description                           : BeatVibrator syncs vibrations to the beat of your music for a tactile rhythm experience.
+    fontawesome_icon_name                 : music
+
+  - title                                 : Google Play Ready
+    description                           : Available on the Google Play Store for Android devices.
+    fontawesome_icon_name                 : mobile
+
+  - title                                 : Free to Use
+    description                           : BeatVibrator is completely free with no ads or subscriptions.
+    fontawesome_icon_name                 : star
+
+  - title                                 : Easy to Tweak
+    description                           : Tweak accent color, images, icons and transparency via the _config.yml file. No HTML/CSS needed.
+    fontawesome_icon_name                 : adjust
+
+  - title                                 : Feature List
+    description                           : Add features (like this one) to your site via the _config.yml file. No HTML/CSS needed.
+    fontawesome_icon_name                 : star
+
+  - title                                 : Social Links
+    description                           : Easily add social media accounts and contact info in the footer via the _config.yml file. No HTML/CSS needed.
+    fontawesome_icon_name                 : link
+
+  - title                                 : FontAwesome Support
+    description                           : Pick custom Font Awesome icons for the feature list via the _config.yml file. No HTML/CSS needed.
+    fontawesome_icon_name                 : info-circle
+
+  - title                                 : # New Feature Title
+    description                           : # New Feature Description
+    fontawesome_icon_name                 : # Enter Font Awesome icon name (e.g. star). Find icons on fontawesome.com/icons.
+
+
+
+# Theme Settings
+topbar_color                              : "#000000"
+topbar_transparency                       : 0.1
+topbar_title_color                        : "#ffffff"
+
+cover_image                               : assets/headerimage.png                    # Replace with alternative image path or image URL.
+cover_overlay_color                       : "#0a0a0a"
+cover_overlay_transparency                : 0.7
+
+device_color                              : black                                     # Set to: blue, black, yellow, coral or white.
+
+body_background_color                     : "#ffffff"
+
+link_color                                : "#1d63ea"
+
+app_title_color                           : "#ffffff"
+app_price_color                           : "#ffffff"
+app_description_color                     : "#ffffff"
+
+feature_title_color                       : "#000000"
+feature_text_color                        : "#666666"
+
+feature_icons_foreground_color            : "#1d63ea"
+feature_icons_background_color            : "#e6e6e6"
+
+social_icons_foreground_color             : "#666666"
+social_icons_background_color             : "#e6e6e6"
+
+footer_text_color                         : "#666666"
+
+
+
+
+####################################################
+### Jekyll Configuration. No need to touch this. ###
+####################################################
+
+# Set the Sass partials directory, as we're using @imports
 sass:
-  style: compressed
+  style: :compressed # You might prefer to minify using :compressed
+
+# Exclude these files from your production _site
+exclude:
+  - LICENSE
+  - README.md
+
+collections:
+  pages:
+    output: true
+    permalink: /:path/
 
 # Markdown rendering
 markdown: kramdown
-kramdown:
-  input: GFM
-
-# Exclude
-exclude:
-  - .sass-cache
-  - .jekyll-cache
-  - apps/.templates
